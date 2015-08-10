@@ -1,0 +1,76 @@
+due 13 March 15.
+
+1.  (Problem 4.5, KT): Consider a straight road, with n houses on it at
+distances x[1], ... x[n].  You have to place cell phone base stations
+so that each house is within 4 km of some station.  Give an algorithm
+to decide on the position of the cell phone stations so that the
+number of stations needed is minimized.
+
+As always, a proof is needed.  Try to use the style discussed in
+class.
+
+2.  (Problem 4.13, KT) There are n jobs to be processed on a single
+processor.  Each job has a processing time p[i] and a weight w[i]
+indicating its importance.  Your goal is to process the jobs in an
+order which minimizes w[1]f[1]+w[2]f[2]+...+w[n]f[n], where f[i] is
+the finishing time of job i.
+
+(Try the exchange argument to discover the criterion: if we exchange
+job order in an optimal solution the objective should not decrease.)
+
+3.  Write a program to solve either the 2SUM problem from the midsem
+or the tiling problem from quiz 1.  
+
+The 2SUM problem is described more completely in what follows.  The
+input is a set of integers x[1..n] and integers F,S.  Write a program
+to determine if there exist disjoint subsets f,s of x[1..n] which add up
+to F,S respectively.  If such subsets exist, they should be printed.
+The algorithm should run in time polynomial in F,S,n.
+
+The tiling problem is exactly from the quiz.  You are expected to
+write the program complete with graphics.  Here is the program
+fragment using simplecpp that you used in CS 101.  The explanation of
+the graphics related calls is in the e-book that you were given
+(copies of the book are in the library too).  The parameter N is the
+same as 2^n from the problem statement.  You can of course rewrite the
+whole thing; but the skeleton is given because you may find it useful
+w.r.t. the graphics calls.
+
+#include <simplecpp>
+
+const int W=20, N=32;
+
+// W = tile width, N = number of tiles in each row and each column.
+
+Color rColor(){  // random colour.
+  return COLOR(randuv(0,256), randuv(0,256), randuv(0,256));
+}
+
+
+void tile(int neXindex, int neYindex, int N, int holeX, int holeY){
+
+ ... fill in here ...
+
+}
+
+
+int main(){
+
+  initCanvas("Tiling",W*N,W*N);
+
+  int clickPos = getClick();  // to fix square to leave untiled.
+
+  int holeX = clickPos/65536/W, holeY =(clickPos % 65536)/W;
+
+  Circle c(holeX*W + W/2, holeY*W + W/2, W/2);
+  c.setFill();
+  c.setColor(COLOR("red"));
+  c.imprint();
+
+  tile(0,0,N,holeX,holeY);
+
+  getClick();
+
+}
+  
+
